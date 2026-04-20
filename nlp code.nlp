@@ -1,0 +1,29 @@
+import string
+def remove_punctuation(text):
+    return text.translate(str.maketrans('','',string.punctuation))
+text = "hello, world"
+clean_text = remove_punctuation(text)
+print(clean_text)
+
+#bag of words
+
+from sklearn.feature_extraction.text import CountVectorizer
+documents = [
+"i love programing in python"
+]
+vectorizer = CountVectorizer()
+X = vectorizer.get_feature_names_out()
+feature_names = vectorizer.get_feature_names_out()
+print("feature nmae:",feature_names)
+print("bag of words model:\n",X.toarray())
+
+
+#N gram
+
+def n_grams(text,n):
+    words = text.split()
+    return[tuple(words[i:i+n]) for i in range(len(words)-n+1)]
+text = "I Love programming in Python"
+n = 2
+print(n_grams(text,n))
+
